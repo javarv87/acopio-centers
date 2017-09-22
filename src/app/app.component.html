@@ -1,8 +1,9 @@
 <md-toolbar color="primary">
-  <span>Custom Toolbar</span>
+  <span (click)="sidenav.toggle()"><img style="width: 20px;" src="assets/touch/icon-128x128.png" alt="Como Ayudar MX"> Como Ayudar MX</span>
 </md-toolbar>
-<input type="text" id="message" placeholder="What is it that you do?" (keyup.enter)="Send($event.target.value)"
-  [(ngModel)]="centro.name" />
-<div id="details-container">
-  <p *ngFor="let centro of centros | async">{{centro.name}}</p>
-</div>
+<md-sidenav-container>
+  <md-sidenav #sidenav mode="side" opened="true">
+    <!-- sidenav content -->
+  </md-sidenav>
+  <router-outlet class="main-container"></router-outlet>
+</md-sidenav-container>
