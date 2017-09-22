@@ -6,11 +6,11 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: '<your-key>',
-    authDomain: '<your-project-authdomain>',
-    databaseURL: '<your-database-URL>',
-    projectId: '<your-project-id>',
-    storageBucket: '<your-storage-bucket>',
-    messagingSenderId: '<your-messaging-sender-id>'
+    apiKey: 'AIzaSyDWbtk2X-OVOkuiTyoRLvImLZMl4_HQqu4',
+    authDomain: 'comoayudar-mx.firebaseapp.com',
+    databaseURL: 'https://comoayudar-mx.firebaseio.com',
+    projectId: 'comoayudar-mx',
+    storageBucket: 'comoayudar-mx.appspot.com',
+    messagingSenderId: '746849459964'
   }
 };

@@ -4,7 +4,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from './material/material.module';
-
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule, FirebaseObjectObservable } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { environment } from '../environments/environment';
+import { RoutingModule } from './router/router.module';
 
 import { AppComponent } from './app.component';
 
@@ -17,7 +21,11 @@ import { AppComponent } from './app.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule
+    MaterialModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    RoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
