@@ -1,11 +1,27 @@
-<h1 md-dialog-title>Agregar Nuevo Centro</h1>
+<div class="modal-header">
+  <md-icon aria-label="Centro de Acopio">account_balance</md-icon>
+  <h1 md-dialog-title>
+    Agregar Nuevo Centro
+  </h1>
+</div>
 <div md-dialog-content>
-  <p>What's your favorite animal?</p>
-  <md-form-field>
-    <input mdInput tabindex="1" [(ngModel)]="centro.name">
+  <md-form-field class="full-width">
+    <input mdInput placeholder="Nombre" [(ngModel)]="centro.name">
+  </md-form-field>
+  <md-form-field class="full-width">
+    <textarea mdInput placeholder="Dirección" [(ngModel)]="centro.description"></textarea>
+  </md-form-field>
+  <md-form-field class="full-width">
+    <input mdInput placeholder="Estado" aria-label="Estado" [mdAutocomplete]="auto" [formControl]="stateCtrl">
+    <md-autocomplete #auto="mdAutocomplete">
+      <md-option *ngFor="let state of filteredStates | async" [value]="state.name">
+        <span>{{state.abreviation}} | {{ state.name }}</span> |
+        <small>Population: {{state.population}}</small>
+      </md-option>
+    </md-autocomplete>
   </md-form-field>
 </div>
 <div md-dialog-actions>
-  <button md-button [md-dialog-close]="centro.name" tabindex="2">Ok</button>
-  <button md-button (click)="onNoClick()" tabindex="-1">No Thanks</button>
+  <button md-raised-button color="primary" [md-dialog-close]="centro" tabindex="2">GUARDAR</button>
+  <button md-button color="accent" (click)="onNoClick()" tabindex="-1">CANCELAR</button>
 </div>

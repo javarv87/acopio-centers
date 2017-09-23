@@ -1,8 +1,15 @@
-<input type="text" id="message" placeholder="What is it that you do?" (keyup.enter)="createCenter($event.target.value)" [(ngModel)]="centro.name"
-/>
-<div id="details-container">
-  <p *ngFor="let centro of centros | async">{{centro.name}}</p>
+<div class="acopios-container">
+  <md-card class="acopio-card" *ngFor="let centro of centros | async" fxflex>
+    <md-card-title>{{centro.name}}</md-card-title>
+    <md-card-content>
+      <p>{{centro.description}}</p>
+    </md-card-content>
+    <md-card-actions>
+      <button md-button>LIKE</button>
+      <button md-button>SHARE</button>
+    </md-card-actions>
+  </md-card>
 </div>
 <button md-fab (click)="openDialog()" class="btn-button">
-    <md-icon class="md-24" aria-label="Añadir nuevo centro de acopio" >add</md-icon>
+    <md-icon aria-label="Añadir nuevo centro de acopio" >add</md-icon>
 </button>

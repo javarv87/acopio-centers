@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MdSnackBar } from '@angular/material';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
+
 import { Centro } from './../../common/centro';
-import { MatDialog } from '@angular/material';
+import { Observable } from 'rxjs/Observable';
 import { ModalCentroComponent } from './../modal-centro/modal-centro.component';
 
 @Component({
@@ -18,7 +19,8 @@ export class CentrosComponent implements OnInit {
 
   constructor(
     public af: AngularFireDatabase,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public snackBar: MdSnackBar
   ) {}
 
   ngOnInit() {
@@ -37,13 +39,15 @@ export class CentrosComponent implements OnInit {
   openDialog(): void {
     this.centro = new Centro();
     const dialogRef = this.dialog.open(ModalCentroComponent, {
-      width: '250px',
       data: this.centro
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.centros.push({ name: result });
-      this.centro = new Centro();
+        this.centros.push(result);
+        this.snackBar.open('Se creó un nuevo centro de acopio', 'OK', {
+          duration: 2000,
+        });
+        this.centro = new Centro();
     });
   }
 
