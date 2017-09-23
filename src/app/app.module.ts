@@ -9,6 +9,7 @@ import { AngularFireDatabaseModule, FirebaseObjectObservable } from 'angularfire
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 import { RoutingModule } from './routing/routing.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
 import { CentrosComponent } from './components/centros/centros.component';
@@ -27,7 +28,8 @@ import { CentrosComponent } from './components/centros/centros.component';
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
