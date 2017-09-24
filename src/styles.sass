@@ -21,6 +21,9 @@ $light-theme:   mat-light-theme($light-primary, $light-accent, $light-warn);
 // that you are using.
 @include angular-material-theme($light-theme);
 
+//Variables
+$red: #f44336;
+
 html, body
     margin: 0;
     padding: 0;
@@ -35,4 +38,11 @@ material-app,
 md-sidenav-container,
 .main-container
   margin: 0;
-  height: calc(100vh - 64px);
+  height: calc(100vh - 56px);
+
+*
+    outline: none;
+
+.text
+    &-primary
+        color: $red;

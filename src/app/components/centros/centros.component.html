@@ -1,15 +1,21 @@
-<div class="acopios-container">
-  <md-card class="acopio-card" *ngFor="let centro of centros | async" fxflex>
-    <md-card-title>{{centro.name}}</md-card-title>
-    <md-card-content>
-      <p>{{centro.description}}</p>
-    </md-card-content>
-    <md-card-actions>
-      <button md-button>LIKE</button>
-      <button md-button>SHARE</button>
-    </md-card-actions>
-  </md-card>
+<div class="container">
+  <button md-button color="accent" [routerLink]="['nuevo']">
+    <md-icon aria-label="Agregar nuevo centro de acopio">add</md-icon> AGREGAR
+  </button>
+  <div class="acopios-container">
+    <md-card class="acopio-card" *ngFor="let centro of centros | async" fxflex>
+      <pre>{{centro | json}}</pre>
+      <md-card-title>{{centro.name}}</md-card-title>
+      <md-card-content>
+        <p>{{centro.description}}</p>
+      </md-card-content>
+      <md-card-actions>
+        <button md-button>LIKE</button>
+        <button md-button>SHARE</button>
+      </md-card-actions>
+    </md-card>
+  </div>
+  <button md-fab [routerLink]="['nuevo']" class="btn-button">
+      <md-icon aria-label="Agregar nuevo centro de acopio" >add</md-icon>
+  </button>
 </div>
-<button md-fab (click)="openDialog()" class="btn-button">
-    <md-icon aria-label="Añadir nuevo centro de acopio" >add</md-icon>
-</button>

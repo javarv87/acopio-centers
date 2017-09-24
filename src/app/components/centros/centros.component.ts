@@ -5,7 +5,6 @@ import * as firebase from 'firebase/app';
 
 import { Centro } from './../../common/centro';
 import { Observable } from 'rxjs/Observable';
-import { ModalCentroComponent } from './../modal-centro/modal-centro.component';
 
 @Component({
   selector: 'app-centros',
@@ -19,7 +18,6 @@ export class CentrosComponent implements OnInit {
 
   constructor(
     public af: AngularFireDatabase,
-    public dialog: MatDialog,
     public snackBar: MdSnackBar
   ) {}
 
@@ -35,20 +33,4 @@ export class CentrosComponent implements OnInit {
   //   this.centros.push({ name: name });
   //   this.centro = new Centro();
   // }
-
-  openDialog(): void {
-    this.centro = new Centro();
-    const dialogRef = this.dialog.open(ModalCentroComponent, {
-      data: this.centro
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-        this.centros.push(result);
-        this.snackBar.open('Se creó un nuevo centro de acopio', 'OK', {
-          duration: 2000,
-        });
-        this.centro = new Centro();
-    });
-  }
-
 }

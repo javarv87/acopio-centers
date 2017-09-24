@@ -13,13 +13,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
 import { CentrosComponent } from './components/centros/centros.component';
-import { ModalCentroComponent } from './components/modal-centro/modal-centro.component';
+import { CentroComponent } from './components/centros/centro/centro.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CentrosComponent,
-    ModalCentroComponent
+    CentroComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -36,7 +36,7 @@ import { ModalCentroComponent } from './components/modal-centro/modal-centro.com
   ],
   providers: [],
   entryComponents: [
-    ModalCentroComponent
+    // ModalCentroComponent
   ],
   bootstrap: [AppComponent]
 })

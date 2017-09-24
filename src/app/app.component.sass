@@ -1,5 +1,24 @@
-md-sidenav
-    width: 200px;
+md-toolbar
+  height: 56px;
+  min-height: 56px!important;
+  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+  position: relative;
+  z-index: 10;
+  .mat-toolbar-layout,
+  .mat-toolbar-row
+    height: 56px;
 
-.mat-list-icon
-  color: rgba(0, 0, 0, 0.54);
+md-sidenav
+  padding-bottom: 72px;
+  width: 240px;
+  box-shadow: 3px 0 6px rgba(0,0,0,.24);
+  .mat-list-item
+    &.active
+      border-right: 3px solid #009688;
+    h2.mat-subheader
+      font-weight: 400;
+    .mat-list-icon
+      color: rgba(0, 0, 0, 0.54);
+
+.container
+  padding: 15px;
