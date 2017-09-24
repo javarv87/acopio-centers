@@ -32,7 +32,8 @@ import { CentroComponent } from './components/centros/centro/centro.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ReactiveFormsModule
   ],
   providers: [],
   entryComponents: [

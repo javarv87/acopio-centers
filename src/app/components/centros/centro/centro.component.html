@@ -2,14 +2,59 @@
   <button md-button [routerLink]="['/centros']" color="accent">
     <md-icon aria-label="Agregar nuevo centro de acopio">arrow_back</md-icon> REGRESAR
   </button>
-  <md-card>
-    <md-card-title>Información del Centro de Acopio</md-card-title>
-    <md-card-content>
-      <p>asdasdasd</p>
-    </md-card-content>
-    <md-card-actions>
-      <button md-raised-button color="accent">GUARDAR</button>
-      <button md-button [routerLink]="['/centros']" color="warn">CANCELAR</button>
-    </md-card-actions>
-  </md-card>
+  <form [formGroup]="acopioCenterForm" novalidate>
+    <md-card>
+      <md-card-title>Información del Centro</md-card-title>
+      <md-card-content>
+        <md-form-field class="full-width">
+          <input mdInput placeholder="Nombre" formControlName="name">
+        </md-form-field>
+        <md-form-field class="full-width">
+          <input mdInput placeholder="Estado" [mdAutocomplete]="showStates" formControlName="state">
+          <md-autocomplete #showStates="mdAutocomplete">
+            <md-option *ngFor="let filteredState of filteredStates | async" [value]="filteredState.name">
+              <span>{{filteredState.name}}</span>
+            </md-option>
+          </md-autocomplete>
+        </md-form-field>
+        <md-form-field class="full-width">
+          <input mdInput placeholder="Ciudad" formControlName="city">
+        </md-form-field>
+        <md-form-field class="full-width">
+          <input mdInput #postalCode maxlength="5" placeholder="Código Postal" formControlName="cp">
+          <md-hint align="end">{{postalCode.value.length}} / 5</md-hint>
+        </md-form-field>
+        <md-form-field class="full-width">
+          <textarea mdInput placeholder="Dirección" formControlName="address"></textarea>
+        </md-form-field>
+        <md-form-field class="full-width">
+          <input mdInput placeholder="Referencia" formControlName="reference">
+        </md-form-field>
+        <md-card-title>Información de Contactos</md-card-title>
+        
+        <!-- <md-select placeholder="Tipo de centro" [(ngModel)]="selectedValue" name="tipo">
+          <md-option value="1">Acopio</md-option>
+          <md-option value="2">Alberge</md-option>
+        </md-select>
+        <md-form-field class="full-width">
+          <input mdInput placeholder="Teléfono">
+        </md-form-field>
+        <md-form-field class="full-width">
+          <input mdInput placeholder="Horario d Atención">
+        </md-form-field>
+        <md-form-field class="full-width">
+          <input mdInput placeholder="Abierto hasta">
+        </md-form-field>
+        <div *ngIf="selectedValue == '2'">
+          <md-form-field class="full-width">
+            <input mdInput placeholder="Numero de personas">
+          </md-form-field>
+        </div> -->
+      </md-card-content>
+      <md-card-actions>
+        <button md-raised-button color="accent" (click)="saveCenter(acopioCenterForm.value)">GUARDAR</button>
+        <button md-button [routerLink]="['/centros']" color="warn">CANCELAR</button>
+      </md-card-actions>
+    </md-card>
+  </form>
 </div>

@@ -12,13 +12,31 @@ md-sidenav
   padding-bottom: 72px;
   width: 240px;
   box-shadow: 3px 0 6px rgba(0,0,0,.24);
-  .mat-list-item
-    &.active
-      border-right: 3px solid #009688;
-    h2.mat-subheader
-      font-weight: 400;
-    .mat-list-icon
-      color: rgba(0, 0, 0, 0.54);
+  .header-sidenav
+    margin: 0;
+    font-weight: 300;
+    font-family: Roboto Condensed, "Helvetica Neue", sans-serif;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+    height: 36px;
+    padding: 0 16px;
+    position: relative;
+    background: #f1f1f1;
+    color: rgba(0, 0, 0, 0.54);
+  md-list
+    padding: 4px 0!important;
+    .mat-list-item
+      &:hover
+        background: #f2f2f2;
+      &.active
+        border-right: 3px solid #009688;
+        .mat-icon,
+        .mat-subheader
+          color: #009688;
+      .mat-list-icon
+        color: rgba(0, 0, 0, 0.54);
 
 .container
   padding: 15px;

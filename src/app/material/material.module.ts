@@ -9,7 +9,8 @@ import {
   MatInputModule,
   MatCardModule,
   MatAutocompleteModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatSelectModule
 } from '@angular/material';
 
 const MaterialComponents = [
@@ -22,7 +23,8 @@ const MaterialComponents = [
   MatInputModule,
   MatCardModule,
   MatAutocompleteModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatSelectModule
 ];
 
 @NgModule({

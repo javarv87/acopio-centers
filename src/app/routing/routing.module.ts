@@ -4,7 +4,7 @@ import { CentrosComponent } from './../components/centros/centros.component';
 import { CentroComponent } from './../components/centros/centro/centro.component';
 
 const routes: Routes = [
-  { path: '', component: CentrosComponent },
+  { path: '', redirectTo: '/centros', pathMatch: 'full' },
   { path: 'centros', component: CentrosComponent },
   { path: 'centros/nuevo', component: CentroComponent },
   { path: 'centros/:id', component: CentroComponent }

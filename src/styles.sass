@@ -24,13 +24,16 @@ $light-theme:   mat-light-theme($light-primary, $light-accent, $light-warn);
 //Variables
 $red: #f44336;
 
+*
+  outline: none;
+
 html, body
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 
 body
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-    background: #F1F4F7;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: #F1F4F7;
 
 html,
 body,
@@ -40,9 +43,12 @@ md-sidenav-container,
   margin: 0;
   height: calc(100vh - 56px);
 
-*
-    outline: none;
+.mat-drawer-container
+  background: #F1F4F7!important;
 
 .text
-    &-primary
-        color: $red;
+  &-primary
+    color: $red;
+
+.full-width
+  width: 100%;
