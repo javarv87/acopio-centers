@@ -4,15 +4,17 @@
   </button>
   <div class="acopios-container">
     <md-card class="acopio-card" *ngFor="let centro of centros | async" fxflex>
-      <pre>{{centro | json}}</pre>
       <md-card-title>{{centro.name}}</md-card-title>
       <md-card-content>
-        <p>{{centro.description}}</p>
+        <p>{{centro.address}}, {{centro.city}}, {{centro.state}}</p>
+        <ul>
+          <li *ngFor="let contact of centro?.contacts">{{contact.contactName}} - {{contact.phoneNumber}}</li>
+        </ul>
       </md-card-content>
-      <md-card-actions>
+      <!-- <md-card-actions>
         <button md-button>LIKE</button>
         <button md-button>SHARE</button>
-      </md-card-actions>
+      </md-card-actions> -->
     </md-card>
   </div>
   <button md-fab [routerLink]="['nuevo']" class="btn-button">

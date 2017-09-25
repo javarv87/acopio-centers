@@ -31,7 +31,6 @@
           <input mdInput placeholder="Referencia" formControlName="reference">
         </md-form-field>
         <div>
-          <!-- <button md-button mdStepperNext (click)="saveCenter(acopioCenterForm.value)">Next</button> -->
           <button md-raised-button color="accent" mdStepperNext [disabled]="acopioCenterForm.invalid">SIGUIENTE</button>
           <button md-button [routerLink]="['/centros']" color="warn">CANCELAR</button>
         </div>
@@ -76,9 +75,10 @@
     </md-step>
     <md-step>
       <ng-template mdStepLabel>Información Adicional</ng-template>
-      You are now done.
+      <h2>You are now done.</h2>
       <div>
-        <button md-button mdStepperPrevious>Back</button>
+        <button md-button color="accent" mdStepperPrevious>REGRESAR</button>
+        <button md-raised-button color="accent" (click)="saveCenter(acopioCenterForm.value)">GUARDAR</button>
       </div>
     </md-step>
   </md-horizontal-stepper>

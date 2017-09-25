@@ -81,7 +81,7 @@ export class CentroComponent implements OnInit {
   addContact(contact: Contact) {
     this.contactsCenter.createNewContact(contact);
     this.dataSource = new ContactsDataSource(this.contactsCenter);
-    this.contactsCenterForm.reset();
+    // this.contactsCenterForm.reset();
   }
 
   removeContact(contact: Contact) {
@@ -89,11 +89,12 @@ export class CentroComponent implements OnInit {
     this.dataSource = new ContactsDataSource(this.contactsCenter);
   }
 
-  saveCenter(acopioCenter): void {
+  saveCenter(acopioCenter): void { 
     this.acopioCenter.name = acopioCenter.name;
     this.acopioCenter.state = acopioCenter.state;
     this.acopioCenter.city = acopioCenter.city;
     this.acopioCenter.address = acopioCenter.address;
+    this.acopioCenter.contacts = this.contactsCenter.data;
     this.centrosService.createAcopioCenter(this.acopioCenter);
   }
 }
