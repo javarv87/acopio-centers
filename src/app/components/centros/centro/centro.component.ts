@@ -1,3 +1,4 @@
+import { Meta, Title } from "@angular/platform-browser";
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -35,7 +36,15 @@ export class CentroComponent implements OnInit {
     public centrosService: CentrosService,
     private statesService: StatesService,
     public af: AngularFireDatabase,
+    public meta: Meta,
+    public title: Title
   ) {
+    this.title.setTitle('Centros de Acopio | Como Ayudar MX');
+    this.meta.addTags([
+      { name: 'author', content: 'javarv87.github.io' },
+      { name: 'keywords', content: 'sismoMX, comoayudarMX' },
+      { name: 'description', content: 'Esta es una plataforma de apoyo al sismo ocurrido el 19/9' }
+    ]);
     this.filteredStates = this.acopioCenterForm.valueChanges
       .startWith(null)
       .map(value => (value && value.state) ? this.filterStates(value.state) : this.states.slice());
@@ -51,6 +60,7 @@ export class CentroComponent implements OnInit {
   }
 
   saveCenter(acopioCenter: Centro): void {
-    this.centrosService.createAcopioCenter(acopioCenter);
+    console.log(acopioCenter);
+    // this.centrosService.createAcopioCenter(acopioCenter);
   }
 }

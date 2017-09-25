@@ -7,10 +7,10 @@
       <md-card-title>Información del Centro</md-card-title>
       <md-card-content>
         <md-form-field class="full-width">
-          <input mdInput placeholder="Nombre" formControlName="name">
+          <input mdInput placeholder="Nombre" formControlName="name" required>
         </md-form-field>
         <md-form-field class="full-width">
-          <input mdInput placeholder="Estado" [mdAutocomplete]="showStates" formControlName="state">
+          <input mdInput placeholder="Estado" [mdAutocomplete]="showStates" formControlName="state" required>
           <md-autocomplete #showStates="mdAutocomplete">
             <md-option *ngFor="let filteredState of filteredStates | async" [value]="filteredState.name">
               <span>{{filteredState.name}}</span>
@@ -18,14 +18,14 @@
           </md-autocomplete>
         </md-form-field>
         <md-form-field class="full-width">
-          <input mdInput placeholder="Ciudad" formControlName="city">
+          <input mdInput placeholder="Ciudad" formControlName="city" required>
         </md-form-field>
         <md-form-field class="full-width">
           <input mdInput #postalCode maxlength="5" placeholder="Código Postal" formControlName="cp">
           <md-hint align="end">{{postalCode.value.length}} / 5</md-hint>
         </md-form-field>
         <md-form-field class="full-width">
-          <textarea mdInput placeholder="Dirección" formControlName="address"></textarea>
+          <textarea mdInput placeholder="Dirección" formControlName="address" required></textarea>
         </md-form-field>
         <md-form-field class="full-width">
           <input mdInput placeholder="Referencia" formControlName="reference">
@@ -52,7 +52,7 @@
         </div> -->
       </md-card-content>
       <md-card-actions>
-        <button md-raised-button color="accent" (click)="saveCenter(acopioCenterForm.value)">GUARDAR</button>
+        <button md-raised-button color="accent" (click)="saveCenter(acopioCenterForm.value)" [disabled]="acopioCenterForm.invalid">GUARDAR</button>
         <button md-button [routerLink]="['/centros']" color="warn">CANCELAR</button>
       </md-card-actions>
     </md-card>

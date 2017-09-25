@@ -9,7 +9,7 @@ export class Centro {
     reference: string;
     type?: string;
     workingHour?: string;
-    contact?: Contact[];
+    contacts?: Contact[];
     closeDate?: string;
     createdAt: Date = new Date();
 }
