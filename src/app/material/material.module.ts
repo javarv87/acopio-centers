@@ -10,7 +10,9 @@ import {
   MatCardModule,
   MatAutocompleteModule,
   MatSnackBarModule,
-  MatSelectModule
+  MatSelectModule,
+  MatStepperModule,
+  MatTableModule
 } from '@angular/material';
 
 const MaterialComponents = [
@@ -24,7 +26,9 @@ const MaterialComponents = [
   MatCardModule,
   MatAutocompleteModule,
   MatSnackBarModule,
-  MatSelectModule
+  MatSelectModule,
+  MatStepperModule,
+  MatTableModule
 ];
 
 @NgModule({

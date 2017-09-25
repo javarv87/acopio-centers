@@ -1,11 +1,11 @@
 <div class="container">
-  <button md-button [routerLink]="['/centros']" color="accent">
+  <button md-button [routerLink]="['/centros']" color="accent" class="back-button">
     <md-icon aria-label="Agregar nuevo centro de acopio">arrow_back</md-icon> REGRESAR
   </button>
-  <form [formGroup]="acopioCenterForm" novalidate>
-    <md-card>
-      <md-card-title>Información del Centro</md-card-title>
-      <md-card-content>
+  <md-horizontal-stepper [linear]="isLinear">
+    <md-step [stepControl]="acopioCenterForm">
+      <form [formGroup]="acopioCenterForm">
+        <ng-template mdStepLabel>Información del Centro</ng-template>
         <md-form-field class="full-width">
           <input mdInput placeholder="Nombre" formControlName="name" required>
         </md-form-field>
@@ -30,31 +30,56 @@
         <md-form-field class="full-width">
           <input mdInput placeholder="Referencia" formControlName="reference">
         </md-form-field>
-        <md-card-title>Información de Contactos</md-card-title>
-        
-        <!-- <md-select placeholder="Tipo de centro" [(ngModel)]="selectedValue" name="tipo">
-          <md-option value="1">Acopio</md-option>
-          <md-option value="2">Alberge</md-option>
-        </md-select>
+        <div>
+          <!-- <button md-button mdStepperNext (click)="saveCenter(acopioCenterForm.value)">Next</button> -->
+          <button md-raised-button color="accent" mdStepperNext [disabled]="acopioCenterForm.invalid">SIGUIENTE</button>
+          <button md-button [routerLink]="['/centros']" color="warn">CANCELAR</button>
+        </div>
+      </form>
+    </md-step>
+    <md-step [stepControl]="contactsCenterForm">
+      <form [formGroup]="contactsCenterForm">
+        <ng-template mdStepLabel>Información de Contacto</ng-template>
         <md-form-field class="full-width">
-          <input mdInput placeholder="Teléfono">
+          <input mdInput placeholder="Nombre" formControlName="contactName" required>
         </md-form-field>
         <md-form-field class="full-width">
-          <input mdInput placeholder="Horario d Atención">
+          <input mdInput placeholder="Teléfono" formControlName="phoneNumber" required>
         </md-form-field>
-        <md-form-field class="full-width">
-          <input mdInput placeholder="Abierto hasta">
-        </md-form-field>
-        <div *ngIf="selectedValue == '2'">
-          <md-form-field class="full-width">
-            <input mdInput placeholder="Numero de personas">
-          </md-form-field>
-        </div> -->
-      </md-card-content>
-      <md-card-actions>
-        <button md-raised-button color="accent" (click)="saveCenter(acopioCenterForm.value)" [disabled]="acopioCenterForm.invalid">GUARDAR</button>
-        <button md-button [routerLink]="['/centros']" color="warn">CANCELAR</button>
-      </md-card-actions>
-    </md-card>
-  </form>
+        <button class="back-button" md-raised-button color="primary" (click)="addContact(contactsCenterForm.value)" [disabled]="contactsCenterForm.invalid">AGREGAR</button>
+        <md-table #table [dataSource]="dataSource">
+          <ng-container mdColumnDef="contactName">
+            <md-header-cell *mdHeaderCellDef> Nombre </md-header-cell>
+            <md-cell *mdCellDef="let row"> {{row.contactName}} </md-cell>
+          </ng-container>
+          <ng-container mdColumnDef="phoneNumber">
+            <md-header-cell *mdHeaderCellDef> Teléfono </md-header-cell>
+            <md-cell *mdCellDef="let row"> {{row.phoneNumber}} </md-cell>
+          </ng-container>
+          <ng-container mdColumnDef="actions">
+            <md-header-cell *mdHeaderCellDef> Eliminar </md-header-cell>
+            <md-cell *mdCellDef="let row">
+              <button md-mini-fab color="warn" (click)="removeContact(row);">
+                <md-icon>delete</md-icon>
+              </button>
+            </md-cell>
+          </ng-container>
+          <md-header-row *mdHeaderRowDef="displayedColumns"></md-header-row>
+          <md-row *mdRowDef="let row; columns: displayedColumns;"></md-row>
+        </md-table>
+        <div>
+          <button md-button color="accent" mdStepperPrevious>REGRESAR</button>
+          <button md-raised-button color="accent" mdStepperNext>SIGUIENTE</button>
+          <button md-button [routerLink]="['/centros']" color="warn">CANCELAR</button>
+        </div>
+      </form>
+    </md-step>
+    <md-step>
+      <ng-template mdStepLabel>Información Adicional</ng-template>
+      You are now done.
+      <div>
+        <button md-button mdStepperPrevious>Back</button>
+      </div>
+    </md-step>
+  </md-horizontal-stepper>
 </div>

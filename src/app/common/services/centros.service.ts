@@ -27,7 +27,7 @@ export class CentrosService {
     return this.acopioCenter;
   }
 
-  createAcopioCenter(acopioCenter): void {
+  createAcopioCenter(acopioCenter: Centro): void {
     this.acopioCenters.push(acopioCenter)
       .catch(error => this.handleError(error));
   }
